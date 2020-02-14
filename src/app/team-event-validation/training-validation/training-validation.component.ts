@@ -92,6 +92,15 @@ export class TrainingValidationComponent implements OnInit, OnDestroy {
 		}
 	}
 
+
+	nextStep() {
+		
+	}
+
+	backStep() {
+		
+	}
+
 	ngOnDestroy() {
 		this.trainingValidationDataSub.unsubscribe();
 	}

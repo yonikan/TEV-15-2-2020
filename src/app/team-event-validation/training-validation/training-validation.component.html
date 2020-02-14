@@ -23,4 +23,8 @@
 			</app-step-training-phases>
 		</mat-step>
 	</mat-horizontal-stepper>
+    <div class="step-footer">
+        <button class="step-back-btn" mat-button (click)="backStep()">back</button>
+        <button class="step-submit-btn" mat-raised-button (click)="nextStep()">next</button>
+    </div>
 </div>
