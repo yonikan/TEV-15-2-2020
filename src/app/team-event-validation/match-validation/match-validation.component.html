@@ -1,35 +1,41 @@
 <div class="match-validation-container">
 	<div *ngIf="isLoading" class="loader-container">
         <mat-spinner></mat-spinner>
+	</div>
+	<div class="stepper-container">
+		<mat-horizontal-stepper [linear]="true" *ngIf="!isLoading" #stepper>
+			<mat-step *ngFor="let step of steps; let i = index" [completed]="step.isCompleted && currentStep === stepper._selectedIndex">
+				<ng-template matStepLabel>{{step.name}}</ng-template>
+				<app-step-match-overview
+					*ngIf="step.name === 'OVERVIEW'"
+					[stepMatchOverviewData]="step1Data"
+					(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"></app-step-match-overview>
+				<app-step-match-players
+					*ngIf="step.name === 'PLAYERS'"
+					[teamEventId]="matchId"
+					[stepMatchPlayersData]="step2Data"
+					(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"
+					(stepBack)="previousStep(stepper)"></app-step-match-players>
+				<app-step-match-formations
+					*ngIf="step.name === 'FORMATIONS'"
+					[stepMatchFormationsData]="step3Data"
+					(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"
+					(stepBack)="previousStep(stepper)"></app-step-match-formations>
+				<app-step-match-phases
+					*ngIf="step.name === 'PHASES'"
+					[stepMatchPhasesData]="step4Data"
+					(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"
+					(stepBack)="previousStep(stepper)"></app-step-match-phases>
+				<app-step-match-subs
+					*ngIf="step.name === 'SUBS'"
+					[stepMatchSubsData]="step5Data"
+					(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"
+					(stepBack)="previousStep(stepper)"></app-step-match-subs>
+			</mat-step>
+		</mat-horizontal-stepper>
+	</div>
+    <div class="step-footer">
+        <button class="step-back-btn" mat-button (click)="backStep()">back</button>
+        <button class="step-submit-btn" mat-raised-button (click)="nextStep(1, step, stepper)">next</button>
     </div>
-	<mat-horizontal-stepper [linear]="true" *ngIf="!isLoading" #stepper>
-		<mat-step *ngFor="let step of steps; let i = index" [completed]="step.isCompleted && currentStep === stepper._selectedIndex">
-			<ng-template matStepLabel>{{step.name}}</ng-template>
-			<app-step-match-overview
-				*ngIf="step.name === 'OVERVIEW'"
-				[stepMatchOverviewData]="step1Data"
-				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"></app-step-match-overview>
-			<app-step-match-players
-				*ngIf="step.name === 'PLAYERS'"
-				[teamEventId]="matchId"
-				[stepMatchPlayersData]="step2Data"
-				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"
-				(stepBack)="previousStep(stepper)"></app-step-match-players>
-			<app-step-match-formations
-				*ngIf="step.name === 'FORMATIONS'"
-				[stepMatchFormationsData]="step3Data"
-				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"
-				(stepBack)="previousStep(stepper)"></app-step-match-formations>
-			<app-step-match-phases
-				*ngIf="step.name === 'PHASES'"
-				[stepMatchPhasesData]="step4Data"
-				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"
-				(stepBack)="previousStep(stepper)"></app-step-match-phases>
-			<app-step-match-subs
-				*ngIf="step.name === 'SUBS'"
-				[stepMatchSubsData]="step5Data"
-				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"
-				(stepBack)="previousStep(stepper)"></app-step-match-subs>
-		</mat-step>
-	</mat-horizontal-stepper>
 </div>

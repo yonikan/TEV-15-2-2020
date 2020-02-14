@@ -4,5 +4,6 @@
 :host {
     .step-training-general-container {
         @include team-event-step;
+        // margin-top: 72px; // for the fixes stepper
     }
 }

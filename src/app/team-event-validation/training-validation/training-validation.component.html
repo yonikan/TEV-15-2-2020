@@ -1,30 +1,32 @@
 <div class="training-validation-container">
 	<div *ngIf="isLoading || !step1Data" class="loader-container">
         <mat-spinner></mat-spinner>
-    </div>
-	<mat-horizontal-stepper [linear]="true" *ngIf="!isLoading && step1Data" #stepper>
-		<mat-step *ngFor="let step of steps; let i = index" [completed]="step.isCompleted && currentStep === stepper._selectedIndex">
-			<ng-template matStepLabel>{{step.name}}</ng-template>
-			<app-step-training-general
-				*ngIf="step.name === 'GENERAL'"
-				[stepTrainingGeneralData]="step1Data"
-				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
-			</app-step-training-general>
-			<app-step-training-players
-				*ngIf="step.name === 'PLAYERS'"
-				[teamEventId]="trainingId"
-				[stepTrainingPlayersData]="step2Data"
-				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
-			</app-step-training-players>
-			<app-step-training-phases
-				*ngIf="step.name === 'PHASES'"
-				[stepTrainingPhasesData]="step3Data"
-				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
-			</app-step-training-phases>
-		</mat-step>
-	</mat-horizontal-stepper>
+	</div>
+	<div class="stepper-container">
+		<mat-horizontal-stepper [linear]="true" *ngIf="!isLoading && step1Data" #stepper>
+			<mat-step *ngFor="let step of steps; let i = index" [completed]="step.isCompleted && currentStep === stepper._selectedIndex">
+				<ng-template matStepLabel>{{step.name}}</ng-template>
+				<app-step-training-general
+					*ngIf="step.name === 'GENERAL'"
+					[stepTrainingGeneralData]="step1Data"
+					(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
+				</app-step-training-general>
+				<app-step-training-players
+					*ngIf="step.name === 'PLAYERS'"
+					[teamEventId]="trainingId"
+					[stepTrainingPlayersData]="step2Data"
+					(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
+				</app-step-training-players>
+				<app-step-training-phases
+					*ngIf="step.name === 'PHASES'"
+					[stepTrainingPhasesData]="step3Data"
+					(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
+				</app-step-training-phases>
+			</mat-step>
+		</mat-horizontal-stepper>
+	</div>
     <div class="step-footer">
         <button class="step-back-btn" mat-button (click)="backStep()">back</button>
-        <button class="step-submit-btn" mat-raised-button (click)="nextStep()">next</button>
+        <button class="step-submit-btn" mat-raised-button (click)="nextStep(1, step, stepper)">next</button>
     </div>
 </div>

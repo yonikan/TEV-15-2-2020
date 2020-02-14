@@ -82,3 +82,11 @@
     }
   }
 }
+
+::ng-deep .mat-drawer-inner-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    border-left: 4px solid #35083a;
+    box-shadow: -4.9px 7.5px 50px 0 rgba(53, 61, 86, 0.1);
+    height: 100%;
+}

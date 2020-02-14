@@ -136,10 +136,12 @@
   background-color: #ffffff;
   // padding: 20px;
   // margin: 15px;
-  border-radius: 10px;
-  border-left: 4px solid #35083a;
-  box-shadow: -4.9px 7.5px 50px 0 rgba(53, 61, 86, 0.1);
-  height: 100%;
+  
+  // border-radius: 10px;
+  // border-left: 4px solid #35083a;
+  // box-shadow: -4.9px 7.5px 50px 0 rgba(53, 61, 86, 0.1);
+  // height: 100%;
+
   // display: flex;
   // justify-content: center;
   // align-items: center;
@@ -162,6 +164,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  margin-top: 72px; // for the fixes stepper
 
   .step-footer {
     border-top: 1px solid #cecece;

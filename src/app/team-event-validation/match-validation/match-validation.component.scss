@@ -17,3 +17,71 @@
 }
 
 @include stepper-style;
+
+.stepper-container {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+}
+  
+  
+  
+  .step-footer {
+      // border-top: 1px solid #cecece;
+      display: flex;
+      // margin-bottom: 20px;
+      margin-top: auto;
+      // margin-top: 40px;
+      padding: 15px 0;
+  
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 75%;
+      z-index: 200;
+      background-color: #fff;
+  
+      // border-bottom-left-radius: 10px;
+      // border-left: 4px solid #35083a;
+      // box-shadow: -4.9px 7.5px 50px 0 rgba(53, 61, 86, 0.1);
+  
+      button {
+        width: 205px;
+        margin-top: 8px;
+        padding: 0 5px;
+        border-radius: 20px;
+        text-transform: uppercase;
+  
+        &:first-child {
+          margin-left: auto;
+        }
+      }
+  
+      .step-back-btn {
+        margin-right: 12px;
+        color: #828282;
+      }
+  
+      .step-submit-btn {
+        background-color: $color-green;
+        color: white;
+      }
+  }
+
+    ::ng-deep .mat-horizontal-stepper-header-container {
+        background-color: #ffffff;
+        position: fixed;
+        top:0;
+        padding-bottom: 6px;
+        
+        right: 0;
+        width: 75%;
+        z-index: 200;
+    }
+    
+    ::ng-deep .mat-horizontal-stepper{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
